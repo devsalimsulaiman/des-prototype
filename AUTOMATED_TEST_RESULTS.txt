@@ -1,0 +1,22 @@
+Norepinephrine DES patient-volume prototype — expanded console verification
+Run date: 2026-10-29
+Environment used for this build check: CPython 3.13.5, pytest 9.0.2, NumPy 2.3.5, pandas 2.2.3, SimPy 4.1.2 source from the supplied prototype environment archive.
+Command: PYTHONPATH=/mnt/data/vendor_simpy:$PWD pytest -vv -rA --color=no
+Result: 44 passed, 0 failed, 0 skipped.
+
+Current test-suite composition:
+- Prior regression/integration suite: 38 pytest test cases, including four parameterized patient-volume parity cases.
+- New positive-control test: one valid event log must pass the audit and all V01–V16 verification checks.
+- New targeted mutation tests: five cases verify that the audit/verification routines detect the corresponding injected defect.
+
+Additional end-to-end CMD demonstration command:
+  python run_console_checks.py
+
+The detailed demonstration prints each baseline audit check and all V01–V16 checks, then tests five in-memory fault mutations: fulfilled > requested; unmet != requested - fulfilled; inconsistent cumulative unmet; replenishment earlier than scheduled; and duplicate reorder while pending. It reports the expected detector, actual failed checks, test result, and confirmation that the valid baseline was not modified. It exports the baseline log and detailed check/mutation CSVs into a timestamped outputs/ folder.
+
+Important interpretation:
+- 44 is the pytest test-case count, not the number of V checks.
+- V01–V16 are 16 named executable verification checks; they are shown individually in the detailed CMD run.
+- Expected failed invariants on a corrupted copy mean the detector worked; the mutation test reports PASS when the intended defect was detected.
+- These tests establish only software correctness/detection for tested cases, not empirical parameter realism or clinical validation.
+- The live Streamlit GUI was not launched in the build environment. On Windows, run setup_windows.bat to install the dependencies, then launch_gui.bat for a GUI smoke test.

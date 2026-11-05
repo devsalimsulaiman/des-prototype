@@ -1,0 +1,66 @@
+﻿mutation_id,injected_defect,audit_check,passed,evidence
+M01,Fulfilled quantity greater than requested quantity,Demand conservation,False,requested=940; fulfilled=421; unmet=520
+M01,Fulfilled quantity greater than requested quantity,Per-demand demand conservation,False,100 demand transactions; largest |requested-fulfilled-unmet|=1
+M01,Fulfilled quantity greater than requested quantity,Cumulative unmet equals summed demand shortfalls,True,cumulative delta=520; demand-only unmet=520
+M01,Fulfilled quantity greater than requested quantity,Row-wise cumulative increment,True,largest delta discrepancy=0
+M01,Fulfilled quantity greater than requested quantity,Cumulative unmet never decreases,True,minimum increment=0
+M01,Fulfilled quantity greater than requested quantity,Non-negative stock,True,minimum stock=0
+M01,Fulfilled quantity greater than requested quantity,Per-demand fulfilment bounds,False,"99/100 demand transactions within non-negative, request, and available-stock bounds"
+M01,Fulfilled quantity greater than requested quantity,Per-demand stock decrement,False,99/100 demand transactions matched
+M01,Fulfilled quantity greater than requested quantity,Inventory conservation,False,initial=100; replenished=320; fulfilled=421; final=0
+M01,Fulfilled quantity greater than requested quantity,Chronological event ordering,True,291 rows in recorded event-index order are nondecreasing in simulation_time
+M01,Fulfilled quantity greater than requested quantity,Replenishment arrival matches scheduled time,True,arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+M01,Fulfilled quantity greater than requested quantity,No duplicate reorder while order pending,True,duplicate order while an earlier order was pending=False; orders pending at horizon=1
+M01,Fulfilled quantity greater than requested quantity,Transaction-only shortfall accounting,True,raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+M02,Unmet quantity no longer equals requested minus fulfilled,Demand conservation,False,requested=940; fulfilled=420; unmet=521
+M02,Unmet quantity no longer equals requested minus fulfilled,Per-demand demand conservation,False,100 demand transactions; largest |requested-fulfilled-unmet|=1
+M02,Unmet quantity no longer equals requested minus fulfilled,Cumulative unmet equals summed demand shortfalls,False,cumulative delta=520; demand-only unmet=521
+M02,Unmet quantity no longer equals requested minus fulfilled,Row-wise cumulative increment,False,largest delta discrepancy=1
+M02,Unmet quantity no longer equals requested minus fulfilled,Cumulative unmet never decreases,True,minimum increment=0
+M02,Unmet quantity no longer equals requested minus fulfilled,Non-negative stock,True,minimum stock=0
+M02,Unmet quantity no longer equals requested minus fulfilled,Per-demand fulfilment bounds,True,"100/100 demand transactions within non-negative, request, and available-stock bounds"
+M02,Unmet quantity no longer equals requested minus fulfilled,Per-demand stock decrement,True,100/100 demand transactions matched
+M02,Unmet quantity no longer equals requested minus fulfilled,Inventory conservation,True,initial=100; replenished=320; fulfilled=420; final=0
+M02,Unmet quantity no longer equals requested minus fulfilled,Chronological event ordering,True,291 rows in recorded event-index order are nondecreasing in simulation_time
+M02,Unmet quantity no longer equals requested minus fulfilled,Replenishment arrival matches scheduled time,True,arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+M02,Unmet quantity no longer equals requested minus fulfilled,No duplicate reorder while order pending,True,duplicate order while an earlier order was pending=False; orders pending at horizon=1
+M02,Unmet quantity no longer equals requested minus fulfilled,Transaction-only shortfall accounting,True,raw all-row unmet sum=521; correct demand-transaction sum=521; notification rows are excluded from transaction totals
+M03,Terminal cumulative-unmet total does not reconcile,Demand conservation,True,requested=940; fulfilled=420; unmet=520
+M03,Terminal cumulative-unmet total does not reconcile,Per-demand demand conservation,True,100 demand transactions; largest |requested-fulfilled-unmet|=0
+M03,Terminal cumulative-unmet total does not reconcile,Cumulative unmet equals summed demand shortfalls,False,cumulative delta=521; demand-only unmet=520
+M03,Terminal cumulative-unmet total does not reconcile,Row-wise cumulative increment,False,largest delta discrepancy=1
+M03,Terminal cumulative-unmet total does not reconcile,Cumulative unmet never decreases,True,minimum increment=0
+M03,Terminal cumulative-unmet total does not reconcile,Non-negative stock,True,minimum stock=0
+M03,Terminal cumulative-unmet total does not reconcile,Per-demand fulfilment bounds,True,"100/100 demand transactions within non-negative, request, and available-stock bounds"
+M03,Terminal cumulative-unmet total does not reconcile,Per-demand stock decrement,True,100/100 demand transactions matched
+M03,Terminal cumulative-unmet total does not reconcile,Inventory conservation,True,initial=100; replenished=320; fulfilled=420; final=0
+M03,Terminal cumulative-unmet total does not reconcile,Chronological event ordering,True,291 rows in recorded event-index order are nondecreasing in simulation_time
+M03,Terminal cumulative-unmet total does not reconcile,Replenishment arrival matches scheduled time,True,arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+M03,Terminal cumulative-unmet total does not reconcile,No duplicate reorder while order pending,True,duplicate order while an earlier order was pending=False; orders pending at horizon=1
+M03,Terminal cumulative-unmet total does not reconcile,Transaction-only shortfall accounting,True,raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+M04,Replenishment arrives one hour earlier than scheduled,Demand conservation,True,requested=940; fulfilled=420; unmet=520
+M04,Replenishment arrives one hour earlier than scheduled,Per-demand demand conservation,True,100 demand transactions; largest |requested-fulfilled-unmet|=0
+M04,Replenishment arrives one hour earlier than scheduled,Cumulative unmet equals summed demand shortfalls,True,cumulative delta=520; demand-only unmet=520
+M04,Replenishment arrives one hour earlier than scheduled,Row-wise cumulative increment,True,largest delta discrepancy=0
+M04,Replenishment arrives one hour earlier than scheduled,Cumulative unmet never decreases,True,minimum increment=0
+M04,Replenishment arrives one hour earlier than scheduled,Non-negative stock,True,minimum stock=0
+M04,Replenishment arrives one hour earlier than scheduled,Per-demand fulfilment bounds,True,"100/100 demand transactions within non-negative, request, and available-stock bounds"
+M04,Replenishment arrives one hour earlier than scheduled,Per-demand stock decrement,True,100/100 demand transactions matched
+M04,Replenishment arrives one hour earlier than scheduled,Inventory conservation,True,initial=100; replenished=320; fulfilled=420; final=0
+M04,Replenishment arrives one hour earlier than scheduled,Chronological event ordering,True,291 rows in recorded event-index order are nondecreasing in simulation_time
+M04,Replenishment arrives one hour earlier than scheduled,Replenishment arrival matches scheduled time,False,"arrivals checked=4; timestamp mismatches=[(33.40981243163337, 34.40981243163337)]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1"
+M04,Replenishment arrives one hour earlier than scheduled,No duplicate reorder while order pending,True,duplicate order while an earlier order was pending=False; orders pending at horizon=1
+M04,Replenishment arrives one hour earlier than scheduled,Transaction-only shortfall accounting,True,raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+M05,Duplicate reorder inserted while the original order is pending,Demand conservation,True,requested=940; fulfilled=420; unmet=520
+M05,Duplicate reorder inserted while the original order is pending,Per-demand demand conservation,True,100 demand transactions; largest |requested-fulfilled-unmet|=0
+M05,Duplicate reorder inserted while the original order is pending,Cumulative unmet equals summed demand shortfalls,True,cumulative delta=520; demand-only unmet=520
+M05,Duplicate reorder inserted while the original order is pending,Row-wise cumulative increment,True,largest delta discrepancy=0
+M05,Duplicate reorder inserted while the original order is pending,Cumulative unmet never decreases,True,minimum increment=0
+M05,Duplicate reorder inserted while the original order is pending,Non-negative stock,True,minimum stock=0
+M05,Duplicate reorder inserted while the original order is pending,Per-demand fulfilment bounds,True,"100/100 demand transactions within non-negative, request, and available-stock bounds"
+M05,Duplicate reorder inserted while the original order is pending,Per-demand stock decrement,True,100/100 demand transactions matched
+M05,Duplicate reorder inserted while the original order is pending,Inventory conservation,True,initial=100; replenished=320; fulfilled=420; final=0
+M05,Duplicate reorder inserted while the original order is pending,Chronological event ordering,True,292 rows in recorded event-index order are nondecreasing in simulation_time
+M05,Duplicate reorder inserted while the original order is pending,Replenishment arrival matches scheduled time,True,arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+M05,Duplicate reorder inserted while the original order is pending,No duplicate reorder while order pending,False,duplicate order while an earlier order was pending=True; orders pending at horizon=1
+M05,Duplicate reorder inserted while the original order is pending,Transaction-only shortfall accounting,True,raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals

@@ -1,0 +1,43 @@
+﻿column,unit_or_type,definition,how_to_interpret_or_aggregate
+scenario_id,text,Scenario label attached to an event,Identifier only; selected scenario may be illustrative.
+replication_id,integer,The stochastic run number within the scenario,Not a patient or hospital ID.
+random_seed,integer,Seed for pseudorandom draws used by the run,Same configuration/seed should reproduce a run.
+event_index,integer,Ordered event-log row number within one run,Useful for distinguishing simultaneous event notifications.
+simulation_time,elapsed hours,Exact model clock time since simulated start,Use for calculations; never seconds or a real hospital timestamp.
+simulation_time_unit,text,Explicit source time unit,Always hours since simulation start in v3.
+elapsed_time_readable,Day N HH:MM:SS,Human-readable representation of elapsed simulation hours,Day 1 starts at time zero; 168 hours is start of Day 8 after seven complete days.
+simulated_datetime,display-only local datetime,An optional calendar label obtained by adding elapsed hours to an arbitrary user-selected start,Does NOT model actual weekday shifts or clock-dependent requests.
+event_type,text,Event transaction or notification,Only DEMAND/REPLENISHMENT_ARRIVAL change quantities transactionally.
+event_semantics,text,Description of how to interpret the event row,SHORTFALL is an informational notification and must not be summed as new demand.
+quantity_before,inventory units,Stock just before a transaction when logged,May be blank on notification rows.
+quantity_after,inventory units,Usable stock after the event row,Multiple rows at the same time can have same stock.
+resource_state,categorical,AVAILABLE LOW CRITICAL or UNAVAILABLE based on the configured state thresholds,Label is a model-defined operational classification not a clinically established risk category.
+demand_quantity,inventory units,Amount requested during a DEMAND transaction,In v3 non-DEMAND events have zero demand quantity.
+fulfilled_quantity,inventory units,Amount fulfilled in a DEMAND transaction,In v3 non-DEMAND events have zero fulfilled quantity.
+unmet_quantity,inventory units,Amount of one demand request not fulfilled,In v3 non-DEMAND events have zero unmet quantity to avoid double counting.
+cumulative_unmet,inventory units,Running sum of unmet demand from primary DEMAND events,It stays unchanged for subsequent notifications and replenishments.
+cumulative_unmet_delta,inventory units,Change in cumulative_unmet relative to the previous event row,Equals transaction_unmet_quantity on correctly logged v3 event traces.
+shortfall_reference_quantity,inventory units,Shortfall amount displayed in a SHORTFALL notification for reference only,Do not sum as new unmet demand.
+related_demand_event_index,integer,Event index of the DEMAND transaction related to a SHORTFALL notification,Links notification to its original demand event.
+transaction_demand_quantity,inventory units,Demand quantity on DEMAND rows and zero elsewhere,Safe column to SUM for total requested amount even for legacy exports.
+transaction_fulfilled_quantity,inventory units,Fulfilled quantity on DEMAND rows and zero elsewhere,Safe column to SUM for total fulfilled amount even for legacy exports.
+transaction_unmet_quantity,inventory units,Unmet quantity on DEMAND rows and zero elsewhere,Safe column to SUM for total unmet even for legacy exports.
+transaction_replenishment_quantity,inventory units,Replenishment quantity on REPLENISHMENT_ARRIVAL rows and zero elsewhere,Safe column to SUM for total received replenishments.
+is_demand_transaction,boolean,Whether the row is a primary DEMAND transaction,Filter TRUE to compute requested fulfilled or unmet demand.
+is_replenishment_transaction,boolean,Whether the row is a primary replenishment arrival,Filter TRUE to compute received stock.
+order_pending,boolean,Whether a replenishment order is pending immediately after the logged event,Can remain TRUE at the horizon if scheduled arrival lies after the run ends.
+reorder_threshold,inventory units,Trigger level used on a REORDER_INITIATED row,Not necessarily repeated in every event row; applies only to the configured policy.
+scheduled_replenishment_time,elapsed hours,Future model-clock hour when the initiated replenishment is expected to arrive,Only present for relevant order events; may exceed horizon.
+scheduled_arrival_readable,Day N HH:MM:SS,Display of scheduled replenishment hour,Human-readable label not a stochastic calendar time.
+scheduled_arrival_datetime,display-only local datetime,Optional calendar label for scheduled replenishment,For interpretation only unless a later model explicitly includes calendar effects.
+replenishment_quantity,inventory units,Stock added by a REPLENISHMENT_ARRIVAL event,Blank on other events.
+state_before,categorical,State immediately before the underlying inventory change if recorded,May be blank for auxiliary events.
+state_after,categorical,State immediately after the underlying inventory change if recorded,May be blank for auxiliary events.
+patient_id,Identifier of a synthetic workload entity associated with patient-related events,Text,Patient-volume mode only; synthetic identifier, not a real patient ID; a patient can generate at most one request in this prototype
+demand_mode,Selected request-generation mode,Text,rate or patient_volume
+patient_volume,Configured number of simulated patients over the selected horizon,Integer,Illustrative workload input; not a hospital census estimate
+patient_demand_probability,Illustrative probability that a simulated patient generates one resource request,Numeric,Patient-volume mode only; must be justified or replaced through RO1
+demand_mode,text,Selected request-generation mode,rate or patient_volume; patient-specific summary fields apply only to patient_volume mode
+patient_volume,integer,Number of simulated patient workload entities configured over the horizon,Exactly this many PATIENT_ARRIVAL events are generated in patient-volume mode; not an estimate of real hospital census
+patient_demand_probability,proportion 0-1,Configured illustrative probability that a simulated patient generates one request,Used only in patient-volume mode; must be supported or replaced through RO1 before final thesis evaluation
+configured_horizon_hours,hours,Configured length of the simulation horizon,Parameter metadata on each event row; the model clock remains elapsed hours

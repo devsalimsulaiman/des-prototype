@@ -1,0 +1,14 @@
+﻿audit_check,passed,evidence
+Demand conservation,True,requested=940; fulfilled=420; unmet=520
+Per-demand demand conservation,True,100 demand transactions; largest |requested-fulfilled-unmet|=0
+Cumulative unmet equals summed demand shortfalls,True,cumulative delta=520; demand-only unmet=520
+Row-wise cumulative increment,True,largest delta discrepancy=0
+Cumulative unmet never decreases,True,minimum increment=0
+Non-negative stock,True,minimum stock=0
+Per-demand fulfilment bounds,True,"100/100 demand transactions within non-negative, request, and available-stock bounds"
+Per-demand stock decrement,True,100/100 demand transactions matched
+Inventory conservation,True,initial=100; replenished=320; fulfilled=420; final=0
+Chronological event ordering,True,291 rows in recorded event-index order are nondecreasing in simulation_time
+Replenishment arrival matches scheduled time,True,arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+No duplicate reorder while order pending,True,duplicate order while an earlier order was pending=False; orders pending at horizon=1
+Transaction-only shortfall accounting,True,raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals

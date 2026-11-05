@@ -1,0 +1,389 @@
+==============================================================================
+SEPSIS-CARE DES — FULL CONSOLE TEST RUN
+==============================================================================
+Timestamp: 2026-10-29T05:50:58
+Python: /opt/pyvenv/bin/python
+Working directory: /mnt/data/prototype_work/Norepinephrine_DES_Prototype
+
+$ /opt/pyvenv/bin/python -u -m pytest -vv -rA --color=no
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- /opt/pyvenv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.5', 'Platform': 'Linux-6.18.55-x86_64-with-glibc2.41', 'Packages': {'pytest': '9.0.2', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.13.0', 'ddtrace': '4.4.0', 'Faker': '40.1.2', 'asyncio': '1.3.0', 'cov': '7.0.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'PLATFORM': 'linux/amd64', 'CI': 'true'}
+rootdir: /mnt/data/prototype_work/Norepinephrine_DES_Prototype
+plugins: anyio-4.13.0, ddtrace-4.4.0, Faker-40.1.2, asyncio-1.3.0, cov-7.0.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 44 items
+
+tests/test_analytics.py::test_state_durations_sum_to_horizon PASSED      [  2%]
+tests/test_analytics.py::test_metrics_are_bounded_and_balance_like PASSED [  4%]
+tests/test_analytics.py::test_replication_output_and_summary PASSED      [  6%]
+tests/test_core.py::test_partial_fulfilment_never_negative PASSED        [  9%]
+tests/test_core.py::test_all_or_none_fulfilment PASSED                   [ 11%]
+tests/test_core.py::test_state_boundaries PASSED                         [ 13%]
+tests/test_core.py::test_reorder_suppression_when_pending PASSED         [ 15%]
+tests/test_core.py::test_replenishment_balance PASSED                    [ 18%]
+tests/test_core.py::test_state_unavailable_for_negative_or_zero_boundary_zero_only_used_normally PASSED [ 20%]
+tests/test_core.py::test_invalid_inputs_raise PASSED                     [ 22%]
+tests/test_core.py::test_patient_volume_configuration_validation PASSED  [ 25%]
+tests/test_data_quality.py::test_elapsed_hours_display_without_changing_numeric_time PASSED [ 27%]
+tests/test_data_quality.py::test_shortfall_notifications_not_double_counted PASSED [ 29%]
+tests/test_data_quality.py::test_legacy_style_shortfall_row_is_not_double_counted PASSED [ 31%]
+tests/test_data_quality.py::test_mutation_of_cumulative_unmet_fails_verification PASSED [ 34%]
+tests/test_data_quality.py::test_wrong_stock_demand_balance_is_detected PASSED [ 36%]
+tests/test_data_quality.py::test_missing_reorder_detected_by_verification PASSED [ 38%]
+tests/test_data_quality.py::test_verification_trace_has_ids_and_metadata PASSED [ 40%]
+tests/test_fault_injection.py::test_valid_event_log_is_positive_control_and_all_v01_v16_pass PASSED [ 43%]
+tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[fulfilled-greater-than-requested] PASSED [ 45%]
+tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[unmet-does-not-equal-request-minus-fulfilled] PASSED [ 47%]
+tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[cumulative-unmet-does-not-reconcile] PASSED [ 50%]
+tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[replenishment-arrives-before-scheduled-time] PASSED [ 52%]
+tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[duplicate-reorder-while-pending] PASSED [ 54%]
+tests/test_reference_scheduler.py::test_fixed_seed_reference_reproducible PASSED [ 56%]
+tests/test_reference_scheduler.py::test_zero_demand_case_unchanged_when_reorder_not_triggered PASSED [ 59%]
+tests/test_reference_scheduler.py::test_initial_reorder_when_starting_below_threshold PASSED [ 61%]
+tests/test_reference_scheduler.py::test_verification_suite_passes_reference_engine PASSED [ 63%]
+tests/test_scenarios.py::test_increased_demand_mode_switch_adjustments_are_mode_specific PASSED [ 65%]
+tests/test_scenarios.py::test_comparison_restores_delayed_replenishment_axis_and_preserves_workload PASSED [ 68%]
+tests/test_scenarios.py::test_comparison_restores_increased_demand_axis_in_both_modes PASSED [ 70%]
+tests/test_scenarios.py::test_comparison_restores_reduced_stock_axis_and_preserves_other_settings PASSED [ 72%]
+tests/test_simpy_integration.py::test_simpy_verification_suite_passes_in_rate_mode PASSED [ 75%]
+tests/test_simpy_integration.py::test_simpy_and_reference_traces_match_in_request_rate_mode PASSED [ 77%]
+tests/test_simpy_integration.py::test_patient_volume_generates_exact_patient_count_and_valid_arrivals PASSED [ 79%]
+tests/test_simpy_integration.py::test_probability_zero_produces_no_requests_but_all_arrivals PASSED [ 81%]
+tests/test_simpy_integration.py::test_probability_one_gives_one_request_per_patient PASSED [ 84%]
+tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[100-0.5-168.0] PASSED [ 86%]
+tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[50-1.0-48.0] PASSED [ 88%]
+tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[50-0.0-48.0] PASSED [ 90%]
+tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[0-0.5-48.0] PASSED [ 93%]
+tests/test_simpy_integration.py::test_patient_volume_metrics_and_summary_expose_workload_to_request_link PASSED [ 95%]
+tests/test_simpy_integration.py::test_zero_patient_volume_reports_proportion_as_not_applicable PASSED [ 97%]
+tests/test_simpy_integration.py::test_patient_volume_verification_suite_passes PASSED [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_analytics.py::test_state_durations_sum_to_horizon
+PASSED tests/test_analytics.py::test_metrics_are_bounded_and_balance_like
+PASSED tests/test_analytics.py::test_replication_output_and_summary
+PASSED tests/test_core.py::test_partial_fulfilment_never_negative
+PASSED tests/test_core.py::test_all_or_none_fulfilment
+PASSED tests/test_core.py::test_state_boundaries
+PASSED tests/test_core.py::test_reorder_suppression_when_pending
+PASSED tests/test_core.py::test_replenishment_balance
+PASSED tests/test_core.py::test_state_unavailable_for_negative_or_zero_boundary_zero_only_used_normally
+PASSED tests/test_core.py::test_invalid_inputs_raise
+PASSED tests/test_core.py::test_patient_volume_configuration_validation
+PASSED tests/test_data_quality.py::test_elapsed_hours_display_without_changing_numeric_time
+PASSED tests/test_data_quality.py::test_shortfall_notifications_not_double_counted
+PASSED tests/test_data_quality.py::test_legacy_style_shortfall_row_is_not_double_counted
+PASSED tests/test_data_quality.py::test_mutation_of_cumulative_unmet_fails_verification
+PASSED tests/test_data_quality.py::test_wrong_stock_demand_balance_is_detected
+PASSED tests/test_data_quality.py::test_missing_reorder_detected_by_verification
+PASSED tests/test_data_quality.py::test_verification_trace_has_ids_and_metadata
+PASSED tests/test_fault_injection.py::test_valid_event_log_is_positive_control_and_all_v01_v16_pass
+PASSED tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[fulfilled-greater-than-requested]
+PASSED tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[unmet-does-not-equal-request-minus-fulfilled]
+PASSED tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[cumulative-unmet-does-not-reconcile]
+PASSED tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[replenishment-arrives-before-scheduled-time]
+PASSED tests/test_fault_injection.py::test_controlled_mutation_is_detected_on_copy[duplicate-reorder-while-pending]
+PASSED tests/test_reference_scheduler.py::test_fixed_seed_reference_reproducible
+PASSED tests/test_reference_scheduler.py::test_zero_demand_case_unchanged_when_reorder_not_triggered
+PASSED tests/test_reference_scheduler.py::test_initial_reorder_when_starting_below_threshold
+PASSED tests/test_reference_scheduler.py::test_verification_suite_passes_reference_engine
+PASSED tests/test_scenarios.py::test_increased_demand_mode_switch_adjustments_are_mode_specific
+PASSED tests/test_scenarios.py::test_comparison_restores_delayed_replenishment_axis_and_preserves_workload
+PASSED tests/test_scenarios.py::test_comparison_restores_increased_demand_axis_in_both_modes
+PASSED tests/test_scenarios.py::test_comparison_restores_reduced_stock_axis_and_preserves_other_settings
+PASSED tests/test_simpy_integration.py::test_simpy_verification_suite_passes_in_rate_mode
+PASSED tests/test_simpy_integration.py::test_simpy_and_reference_traces_match_in_request_rate_mode
+PASSED tests/test_simpy_integration.py::test_patient_volume_generates_exact_patient_count_and_valid_arrivals
+PASSED tests/test_simpy_integration.py::test_probability_zero_produces_no_requests_but_all_arrivals
+PASSED tests/test_simpy_integration.py::test_probability_one_gives_one_request_per_patient
+PASSED tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[100-0.5-168.0]
+PASSED tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[50-1.0-48.0]
+PASSED tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[50-0.0-48.0]
+PASSED tests/test_simpy_integration.py::test_patient_volume_simpy_and_reference_traces_match[0-0.5-48.0]
+PASSED tests/test_simpy_integration.py::test_patient_volume_metrics_and_summary_expose_workload_to_request_link
+PASSED tests/test_simpy_integration.py::test_zero_patient_volume_reports_proportion_as_not_applicable
+PASSED tests/test_simpy_integration.py::test_patient_volume_verification_suite_passes
+============================== 44 passed in 1.58s ==============================
+[PYTEST SUITE EXIT CODE: 0]
+
+$ /opt/pyvenv/bin/python -u /mnt/data/prototype_work/Norepinephrine_DES_Prototype/run_fault_detection_demo.py
+==============================================================================
+RO3 TECHNICAL VERIFICATION + CONTROLLED FAULT-INJECTION DEMONSTRATION
+==============================================================================
+Run timestamp : 2026-10-29T05:51:05
+Python        : 3.13.5
+Engine        : SimPy engine
+Config        : mode=patient_volume; workload=100; horizon=168 h; seed=20261008
+Evidence limit: software verification/audit detection only; not clinical validation.
+Mutation scope: every defect is applied to a deep in-memory copy; baseline log is never overwritten.
+
+POSITIVE CONTROL — VALID EVENT LOG AUDIT
+----------------------------------------
+[PASS] Demand conservation | Demand conservation
+       Evidence: requested=940; fulfilled=420; unmet=520
+[PASS] Per-demand demand conservation | Per-demand demand conservation
+       Evidence: 100 demand transactions; largest |requested-fulfilled-unmet|=0
+[PASS] Cumulative unmet equals summed demand shortfalls | Cumulative unmet equals summed demand shortfalls
+       Evidence: cumulative delta=520; demand-only unmet=520
+[PASS] Row-wise cumulative increment | Row-wise cumulative increment
+       Evidence: largest delta discrepancy=0
+[PASS] Cumulative unmet never decreases | Cumulative unmet never decreases
+       Evidence: minimum increment=0
+[PASS] Non-negative stock | Non-negative stock
+       Evidence: minimum stock=0
+[PASS] Per-demand fulfilment bounds | Per-demand fulfilment bounds
+       Evidence: 100/100 demand transactions within non-negative, request, and available-stock bounds
+[PASS] Per-demand stock decrement | Per-demand stock decrement
+       Evidence: 100/100 demand transactions matched
+[PASS] Inventory conservation | Inventory conservation
+       Evidence: initial=100; replenished=320; fulfilled=420; final=0
+[PASS] Chronological event ordering | Chronological event ordering
+       Evidence: 291 rows in recorded event-index order are nondecreasing in simulation_time
+[PASS] Replenishment arrival matches scheduled time | Replenishment arrival matches scheduled time
+       Evidence: arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+[PASS] No duplicate reorder while order pending | No duplicate reorder while order pending
+       Evidence: duplicate order while an earlier order was pending=False; orders pending at horizon=1
+[PASS] Transaction-only shortfall accounting | Transaction-only shortfall accounting
+       Evidence: raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+
+POSITIVE CONTROL — V01–V16 TECHNICAL VERIFICATION
+-------------------------------------------------
+[PASS] V01 | Inventory balance
+       Evidence: final=0; initial(100)+received(320)-fulfilled(420)=0
+[PASS] V02 | Non-negative stock
+       Evidence: lowest logged stock=0
+[PASS] V03 | Fulfilment bounds
+       Evidence: 100 demand transactions checked
+[PASS] V04 | Event chronology / lead time
+       Evidence: nondecreasing=True; scheduled arrivals matched=True; orders=5
+[PASS] V05 | Duplicate-order suppression
+       Evidence: duplicate order while pending=False
+[PASS] V06 | Reorder trigger completeness
+       Evidence: 5 orders; illegal trigger=False; eligible events with no reorder=[]
+[PASS] V07 | Replenishment balance
+       Evidence: 4 arrival(s) checked
+[PASS] V08 | Resource-state classification
+       Evidence: 291 rows inspected
+[PASS] V09 | Stock-out/recovery notifications
+       Evidence: stockout_starts=5; recoveries=4; stock-out pending at horizon=True
+[PASS] V10 | Demand conservation
+       Evidence: requested=940; fulfilled=420; unmet=520
+[PASS] V11 | Cumulative unmet equals summed demand shortfalls
+       Evidence: cumulative delta=520; demand-only unmet=520
+[PASS] V12 | Row-wise cumulative increment
+       Evidence: largest delta discrepancy=0
+[PASS] V13 | SHORTFALL notification is nontransactional
+       Evidence: 52 SHORTFALL rows; demand/fulfilled/unmet should all be zero
+[PASS] V14 | Zero-demand/no-reorder
+       Evidence: initial=100; observed stock min/max=100/100
+[PASS] V15 | Fixed-seed reproducibility
+       Evidence: config seed=20261008; byte-equivalent DataFrame=True
+[PASS] V16 | Initial-stock reorder at t=0
+       Evidence: 1 initial reorder event(s); opening stock=29.5; threshold=30
+
+VALID CONTROL RESULT: PASS | audit checks 13/13 pass | verification checks 16/16 pass
+
+==============================================================================
+M01 — Fulfilled quantity greater than requested quantity
+Mutated copy field: fulfilled_quantity on one DEMAND row
+Expected detector : audit ['Per-demand fulfilment bounds', 'Per-demand demand conservation'] and/or verification ['V03']
+Audit checks on the corrupted copy (expected failures are deliberate):
+  [EXPECTED FAIL] Demand conservation | requested=940; fulfilled=421; unmet=520
+  [EXPECTED FAIL] Per-demand demand conservation | 100 demand transactions; largest |requested-fulfilled-unmet|=1
+  [PASS] Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=520
+  [PASS] Row-wise cumulative increment | largest delta discrepancy=0
+  [PASS] Cumulative unmet never decreases | minimum increment=0
+  [PASS] Non-negative stock | minimum stock=0
+  [EXPECTED FAIL] Per-demand fulfilment bounds | 99/100 demand transactions within non-negative, request, and available-stock bounds
+  [EXPECTED FAIL] Per-demand stock decrement | 99/100 demand transactions matched
+  [EXPECTED FAIL] Inventory conservation | initial=100; replenished=320; fulfilled=421; final=0
+  [PASS] Chronological event ordering | 291 rows in recorded event-index order are nondecreasing in simulation_time
+  [PASS] Replenishment arrival matches scheduled time | arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+  [PASS] No duplicate reorder while order pending | duplicate order while an earlier order was pending=False; orders pending at horizon=1
+  [PASS] Transaction-only shortfall accounting | raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+Event-log V01–V13 checks on the corrupted copy (V14–V16 are separate scenario/reproducibility cases):
+  [EXPECTED FAIL] V01 Inventory balance | final=0; initial(100)+received(320)-fulfilled(421)=-1
+  [PASS] V02 Non-negative stock | lowest logged stock=0
+  [EXPECTED FAIL] V03 Fulfilment bounds | 100 demand transactions checked
+  [PASS] V04 Event chronology / lead time | nondecreasing=True; scheduled arrivals matched=True; orders=5
+  [PASS] V05 Duplicate-order suppression | duplicate order while pending=False
+  [PASS] V06 Reorder trigger completeness | 5 orders; illegal trigger=False; eligible events with no reorder=[]
+  [PASS] V07 Replenishment balance | 4 arrival(s) checked
+  [PASS] V08 Resource-state classification | 291 rows inspected
+  [PASS] V09 Stock-out/recovery notifications | stockout_starts=5; recoveries=4; stock-out pending at horizon=True
+  [EXPECTED FAIL] V10 Demand conservation | requested=940; fulfilled=421; unmet=520
+  [PASS] V11 Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=520
+  [PASS] V12 Row-wise cumulative increment | largest delta discrepancy=0
+  [PASS] V13 SHORTFALL notification is nontransactional | 52 SHORTFALL rows; demand/fulfilled/unmet should all be zero
+Actual audit failures: ['Demand conservation', 'Per-demand demand conservation', 'Per-demand fulfilment bounds', 'Per-demand stock decrement', 'Inventory conservation']
+Actual V-check failures: ['V01', 'V03', 'V10']
+Expected detector triggered: YES
+Original valid log unchanged: YES
+MUTATION TEST RESULT: PASS — intended defect detected
+
+==============================================================================
+M02 — Unmet quantity no longer equals requested minus fulfilled
+Mutated copy field: unmet_quantity on one DEMAND row
+Expected detector : audit ['Per-demand demand conservation'] and/or verification ['V10']
+Audit checks on the corrupted copy (expected failures are deliberate):
+  [EXPECTED FAIL] Demand conservation | requested=940; fulfilled=420; unmet=521
+  [EXPECTED FAIL] Per-demand demand conservation | 100 demand transactions; largest |requested-fulfilled-unmet|=1
+  [EXPECTED FAIL] Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=521
+  [EXPECTED FAIL] Row-wise cumulative increment | largest delta discrepancy=1
+  [PASS] Cumulative unmet never decreases | minimum increment=0
+  [PASS] Non-negative stock | minimum stock=0
+  [PASS] Per-demand fulfilment bounds | 100/100 demand transactions within non-negative, request, and available-stock bounds
+  [PASS] Per-demand stock decrement | 100/100 demand transactions matched
+  [PASS] Inventory conservation | initial=100; replenished=320; fulfilled=420; final=0
+  [PASS] Chronological event ordering | 291 rows in recorded event-index order are nondecreasing in simulation_time
+  [PASS] Replenishment arrival matches scheduled time | arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+  [PASS] No duplicate reorder while order pending | duplicate order while an earlier order was pending=False; orders pending at horizon=1
+  [PASS] Transaction-only shortfall accounting | raw all-row unmet sum=521; correct demand-transaction sum=521; notification rows are excluded from transaction totals
+Event-log V01–V13 checks on the corrupted copy (V14–V16 are separate scenario/reproducibility cases):
+  [PASS] V01 Inventory balance | final=0; initial(100)+received(320)-fulfilled(420)=0
+  [PASS] V02 Non-negative stock | lowest logged stock=0
+  [PASS] V03 Fulfilment bounds | 100 demand transactions checked
+  [PASS] V04 Event chronology / lead time | nondecreasing=True; scheduled arrivals matched=True; orders=5
+  [PASS] V05 Duplicate-order suppression | duplicate order while pending=False
+  [PASS] V06 Reorder trigger completeness | 5 orders; illegal trigger=False; eligible events with no reorder=[]
+  [PASS] V07 Replenishment balance | 4 arrival(s) checked
+  [PASS] V08 Resource-state classification | 291 rows inspected
+  [PASS] V09 Stock-out/recovery notifications | stockout_starts=5; recoveries=4; stock-out pending at horizon=True
+  [EXPECTED FAIL] V10 Demand conservation | requested=940; fulfilled=420; unmet=521
+  [EXPECTED FAIL] V11 Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=521
+  [EXPECTED FAIL] V12 Row-wise cumulative increment | largest delta discrepancy=1
+  [PASS] V13 SHORTFALL notification is nontransactional | 52 SHORTFALL rows; demand/fulfilled/unmet should all be zero
+Actual audit failures: ['Demand conservation', 'Per-demand demand conservation', 'Cumulative unmet equals summed demand shortfalls', 'Row-wise cumulative increment']
+Actual V-check failures: ['V10', 'V11', 'V12']
+Expected detector triggered: YES
+Original valid log unchanged: YES
+MUTATION TEST RESULT: PASS — intended defect detected
+
+==============================================================================
+M03 — Terminal cumulative-unmet total does not reconcile
+Mutated copy field: cumulative_unmet on END row
+Expected detector : audit ['Cumulative unmet equals summed demand shortfalls'] and/or verification ['V11']
+Audit checks on the corrupted copy (expected failures are deliberate):
+  [PASS] Demand conservation | requested=940; fulfilled=420; unmet=520
+  [PASS] Per-demand demand conservation | 100 demand transactions; largest |requested-fulfilled-unmet|=0
+  [EXPECTED FAIL] Cumulative unmet equals summed demand shortfalls | cumulative delta=521; demand-only unmet=520
+  [EXPECTED FAIL] Row-wise cumulative increment | largest delta discrepancy=1
+  [PASS] Cumulative unmet never decreases | minimum increment=0
+  [PASS] Non-negative stock | minimum stock=0
+  [PASS] Per-demand fulfilment bounds | 100/100 demand transactions within non-negative, request, and available-stock bounds
+  [PASS] Per-demand stock decrement | 100/100 demand transactions matched
+  [PASS] Inventory conservation | initial=100; replenished=320; fulfilled=420; final=0
+  [PASS] Chronological event ordering | 291 rows in recorded event-index order are nondecreasing in simulation_time
+  [PASS] Replenishment arrival matches scheduled time | arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+  [PASS] No duplicate reorder while order pending | duplicate order while an earlier order was pending=False; orders pending at horizon=1
+  [PASS] Transaction-only shortfall accounting | raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+Event-log V01–V13 checks on the corrupted copy (V14–V16 are separate scenario/reproducibility cases):
+  [PASS] V01 Inventory balance | final=0; initial(100)+received(320)-fulfilled(420)=0
+  [PASS] V02 Non-negative stock | lowest logged stock=0
+  [PASS] V03 Fulfilment bounds | 100 demand transactions checked
+  [PASS] V04 Event chronology / lead time | nondecreasing=True; scheduled arrivals matched=True; orders=5
+  [PASS] V05 Duplicate-order suppression | duplicate order while pending=False
+  [PASS] V06 Reorder trigger completeness | 5 orders; illegal trigger=False; eligible events with no reorder=[]
+  [PASS] V07 Replenishment balance | 4 arrival(s) checked
+  [PASS] V08 Resource-state classification | 291 rows inspected
+  [PASS] V09 Stock-out/recovery notifications | stockout_starts=5; recoveries=4; stock-out pending at horizon=True
+  [PASS] V10 Demand conservation | requested=940; fulfilled=420; unmet=520
+  [EXPECTED FAIL] V11 Cumulative unmet equals summed demand shortfalls | cumulative delta=521; demand-only unmet=520
+  [EXPECTED FAIL] V12 Row-wise cumulative increment | largest delta discrepancy=1
+  [PASS] V13 SHORTFALL notification is nontransactional | 52 SHORTFALL rows; demand/fulfilled/unmet should all be zero
+Actual audit failures: ['Cumulative unmet equals summed demand shortfalls', 'Row-wise cumulative increment']
+Actual V-check failures: ['V11', 'V12']
+Expected detector triggered: YES
+Original valid log unchanged: YES
+MUTATION TEST RESULT: PASS — intended defect detected
+
+==============================================================================
+M04 — Replenishment arrives one hour earlier than scheduled
+Mutated copy field: simulation_time on one REPLENISHMENT_ARRIVAL row
+Expected detector : audit ['Replenishment arrival matches scheduled time'] and/or verification ['V04']
+Audit checks on the corrupted copy (expected failures are deliberate):
+  [PASS] Demand conservation | requested=940; fulfilled=420; unmet=520
+  [PASS] Per-demand demand conservation | 100 demand transactions; largest |requested-fulfilled-unmet|=0
+  [PASS] Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=520
+  [PASS] Row-wise cumulative increment | largest delta discrepancy=0
+  [PASS] Cumulative unmet never decreases | minimum increment=0
+  [PASS] Non-negative stock | minimum stock=0
+  [PASS] Per-demand fulfilment bounds | 100/100 demand transactions within non-negative, request, and available-stock bounds
+  [PASS] Per-demand stock decrement | 100/100 demand transactions matched
+  [PASS] Inventory conservation | initial=100; replenished=320; fulfilled=420; final=0
+  [PASS] Chronological event ordering | 291 rows in recorded event-index order are nondecreasing in simulation_time
+  [EXPECTED FAIL] Replenishment arrival matches scheduled time | arrivals checked=4; timestamp mismatches=[(33.40981243163337, 34.40981243163337)]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+  [PASS] No duplicate reorder while order pending | duplicate order while an earlier order was pending=False; orders pending at horizon=1
+  [PASS] Transaction-only shortfall accounting | raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+Event-log V01–V13 checks on the corrupted copy (V14–V16 are separate scenario/reproducibility cases):
+  [PASS] V01 Inventory balance | final=0; initial(100)+received(320)-fulfilled(420)=0
+  [PASS] V02 Non-negative stock | lowest logged stock=0
+  [PASS] V03 Fulfilment bounds | 100 demand transactions checked
+  [EXPECTED FAIL] V04 Event chronology / lead time | nondecreasing=True; scheduled arrivals matched=False; orders=5
+  [PASS] V05 Duplicate-order suppression | duplicate order while pending=False
+  [PASS] V06 Reorder trigger completeness | 5 orders; illegal trigger=False; eligible events with no reorder=[]
+  [PASS] V07 Replenishment balance | 4 arrival(s) checked
+  [PASS] V08 Resource-state classification | 291 rows inspected
+  [PASS] V09 Stock-out/recovery notifications | stockout_starts=5; recoveries=4; stock-out pending at horizon=True
+  [PASS] V10 Demand conservation | requested=940; fulfilled=420; unmet=520
+  [PASS] V11 Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=520
+  [PASS] V12 Row-wise cumulative increment | largest delta discrepancy=0
+  [PASS] V13 SHORTFALL notification is nontransactional | 52 SHORTFALL rows; demand/fulfilled/unmet should all be zero
+Actual audit failures: ['Replenishment arrival matches scheduled time']
+Actual V-check failures: ['V04']
+Expected detector triggered: YES
+Original valid log unchanged: YES
+MUTATION TEST RESULT: PASS — intended defect detected
+
+==============================================================================
+M05 — Duplicate reorder inserted while the original order is pending
+Mutated copy field: one duplicate REORDER_INITIATED event row
+Expected detector : audit ['No duplicate reorder while order pending'] and/or verification ['V05']
+Audit checks on the corrupted copy (expected failures are deliberate):
+  [PASS] Demand conservation | requested=940; fulfilled=420; unmet=520
+  [PASS] Per-demand demand conservation | 100 demand transactions; largest |requested-fulfilled-unmet|=0
+  [PASS] Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=520
+  [PASS] Row-wise cumulative increment | largest delta discrepancy=0
+  [PASS] Cumulative unmet never decreases | minimum increment=0
+  [PASS] Non-negative stock | minimum stock=0
+  [PASS] Per-demand fulfilment bounds | 100/100 demand transactions within non-negative, request, and available-stock bounds
+  [PASS] Per-demand stock decrement | 100/100 demand transactions matched
+  [PASS] Inventory conservation | initial=100; replenished=320; fulfilled=420; final=0
+  [PASS] Chronological event ordering | 292 rows in recorded event-index order are nondecreasing in simulation_time
+  [PASS] Replenishment arrival matches scheduled time | arrivals checked=4; timestamp mismatches=[]; missing scheduled times=False; unexpected arrivals=False; orders still pending at horizon=1
+  [EXPECTED FAIL] No duplicate reorder while order pending | duplicate order while an earlier order was pending=True; orders pending at horizon=1
+  [PASS] Transaction-only shortfall accounting | raw all-row unmet sum=520; correct demand-transaction sum=520; notification rows are excluded from transaction totals
+Event-log V01–V13 checks on the corrupted copy (V14–V16 are separate scenario/reproducibility cases):
+  [PASS] V01 Inventory balance | final=0; initial(100)+received(320)-fulfilled(420)=0
+  [PASS] V02 Non-negative stock | lowest logged stock=0
+  [PASS] V03 Fulfilment bounds | 100 demand transactions checked
+  [PASS] V04 Event chronology / lead time | nondecreasing=True; scheduled arrivals matched=True; orders=6
+  [EXPECTED FAIL] V05 Duplicate-order suppression | duplicate order while pending=True
+  [PASS] V06 Reorder trigger completeness | 6 orders; illegal trigger=False; eligible events with no reorder=[]
+  [PASS] V07 Replenishment balance | 4 arrival(s) checked
+  [PASS] V08 Resource-state classification | 292 rows inspected
+  [PASS] V09 Stock-out/recovery notifications | stockout_starts=5; recoveries=4; stock-out pending at horizon=True
+  [PASS] V10 Demand conservation | requested=940; fulfilled=420; unmet=520
+  [PASS] V11 Cumulative unmet equals summed demand shortfalls | cumulative delta=520; demand-only unmet=520
+  [PASS] V12 Row-wise cumulative increment | largest delta discrepancy=0
+  [PASS] V13 SHORTFALL notification is nontransactional | 52 SHORTFALL rows; demand/fulfilled/unmet should all be zero
+Actual audit failures: ['No duplicate reorder while order pending']
+Actual V-check failures: ['V05']
+Expected detector triggered: YES
+Original valid log unchanged: YES
+MUTATION TEST RESULT: PASS — intended defect detected
+
+==============================================================================
+FINAL RESULT: PASS
+  Valid positive control : PASS
+  Mutations detected     : 5/5
+  Original log preserved : YES
+  Result files           : /mnt/data/prototype_work/Norepinephrine_DES_Prototype/outputs/RO3_fault_detection_20261029_055104
+Reminder: controlled software fault detection is not clinical validation.
+[FAULT-DETECTION DEMO EXIT CODE: 0]
+
+CONSOLE RUN OVERALL RESULT: PASS
+Timestamped transcript: /mnt/data/prototype_work/Norepinephrine_DES_Prototype/outputs/console_checks_20261029_055058/console_test_log.txt
